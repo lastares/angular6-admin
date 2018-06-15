@@ -1,30 +1,33 @@
 import {NgModule, NgModuleRef} from '@angular/core';
-import { UserRoutingModule } from './user-routing.module';
+import {UserRoutingModule} from './user-routing.module';
 import {SharedModule} from "../../shared/shared.module";
-import { UserListComponent } from './list/list.component';
-import { UserEditComponent } from './edit/edit.component';
-import { UserViewComponent } from './view/view.component';
+import {UserListComponent} from './list/list.component';
+import {UserEditComponent} from './edit/edit.component';
+import {UserViewComponent} from './view/view.component';
 import {UserCreateComponent} from "./create/create.component";
 import {NzModalRef} from "ng-zorro-antd";
+import {ListService} from "./list/list.service";
 
 const COMPONENTS = [
-  UserListComponent];
+    UserListComponent];
 const COMPONENTS_NOROUNT = [
-  UserEditComponent,
-  UserViewComponent,
-  UserCreateComponent
+    UserEditComponent,
+    UserViewComponent,
+    UserCreateComponent
 ];
 
 @NgModule({
-  imports: [
-    SharedModule,
-    UserRoutingModule,
+    imports: [
+        SharedModule,
+        UserRoutingModule,
 
-  ],
-  declarations: [
-    ...COMPONENTS,
-    ...COMPONENTS_NOROUNT
-  ],
-  entryComponents: COMPONENTS_NOROUNT
+    ],
+    declarations: [
+        ...COMPONENTS,
+        ...COMPONENTS_NOROUNT
+    ],
+    providers: [NzModalRef, ListService],
+    entryComponents: COMPONENTS_NOROUNT
 })
-export class UserModule { }
+export class UserModule {
+}

@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {_HttpClient} from "@delon/theme";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {ListService} from "./list.service";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
     selector: 'app-user-list',
@@ -78,10 +79,6 @@ export class UserListComponent implements OnInit {
             title: '状态',
             type: 'badge',
             index: 'status',
-            filters: [{text: '正常', value: 1}, {text: '锁定', value: 2}],
-            filter: () => {},
-            // filter: (filter: SimpleTableFilter, record: any) =>
-            //     record.id.indexOf(filter.value) === 0,
             badge: {
                 1: {text: '正常', color: 'success'},
                 2: {text: '锁定', color: 'warning'},
@@ -94,6 +91,11 @@ export class UserListComponent implements OnInit {
                     text: `编辑`,
                     type: 'none',
                     click: ((record: any) => this.router.navigate(['/user/edit/' + record.id])),
+                },
+                {
+                    text: `删除`,
+                    type: 'del',
+                    click: ((record: any) => this.deleteUser(record.id))
                 }
             ]
         }
@@ -117,7 +119,7 @@ export class UserListComponent implements OnInit {
 
     checkboxChange(ret: any) {
         console.log(ret.length);
-        for(let i=0; i<this.getJsonLength(ret); i++) {
+        for (let i = 0; i < this.getJsonLength(ret); i++) {
             this.ids.push(ret[i].id);
         }
         console.log(this.ids);
@@ -161,6 +163,30 @@ export class UserListComponent implements OnInit {
 
     confirm(): void {
         this.msg.info('click confirm');
+    }
+
+    deleteUser(id) {
+        this.isSpinning = true;
+        const url = 'http://www.admin-api.com/deleteUser';
+        this.http.get(url, {id: id}).subscribe((data: any) => {
+                // console.log(data);
+                this.msg.success(data.msg);
+                // setTimeout(() => {
+                //     this.router.navigateByUrl('user/list');
+                // }, 2000);
+            }, (error: HttpErrorResponse) => {
+                if (error.error instanceof Error) {
+                    if (error.error instanceof Error) {
+                        console.log('An error occurred:', error.error.message);
+                    } else {
+                        console.log(`Backend returned code ${error.status}, body was: ${error.error}`);
+                    }
+                }
+            },
+            () => {
+                this.getData();
+                this.isSpinning = false;
+            });
     }
 
 
