@@ -172,4 +172,8 @@ export class UserEditComponent implements OnInit {
             });
         }
     }
+
+    reback():void {
+        this.router.navigateByUrl('/user/list');
+    }
 }

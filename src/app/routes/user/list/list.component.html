@@ -6,7 +6,7 @@
 <nz-card>
   <form nz-form [nzLayout]="'inline'" (ngSubmit)="getData()" [formGroup]="searchForm" class="search__form">
     <nz-row [nzGutter]="{ md: 8, lg: 24, xl: 48 }">
-      <nz-col nzMd="8" nzSm="24" style="margin-right:15px;">
+      <nz-col nzMd="4" nzSm="24" style="margin-right:15px;">
         <nz-form-item>
           <nz-form-label nzFor="username">用户昵称</nz-form-label>
           <nz-form-control>
@@ -14,7 +14,7 @@
           </nz-form-control>
         </nz-form-item>
       </nz-col>
-      <nz-col nzMd="8" nzSm="24">
+      <nz-col nzMd="4" nzSm="24">
         <nz-form-item>
           <nz-form-label nzFor="realname">真实姓名</nz-form-label>
           <nz-form-control>
@@ -22,7 +22,7 @@
           </nz-form-control>
         </nz-form-item>
       </nz-col>
-      <nz-col nzMd="8" nzSm="24" style="margin-right:15px;">
+      <nz-col nzMd="4" nzSm="24" style="margin:0 15px;">
         <nz-form-item>
           <nz-form-label nzFor="mobile">手机号</nz-form-label>
           <nz-form-control>
@@ -39,7 +39,7 @@
           <!--</nz-form-control>-->
         <!--</nz-form-item>-->
       <!--</nz-col>-->
-      <nz-col nzMd="8" nzSm="24">
+      <nz-col nzMd="4" nzSm="24">
         <nz-form-item>
           <nz-form-label nzFor="status">用户状态</nz-form-label>
           <nz-form-control>
@@ -50,21 +50,17 @@
           </nz-form-control>
         </nz-form-item>
       </nz-col>
-      <nz-col [nzSpan]="expandForm ? 24 : 8" [class.text-right]="expandForm" style="margin-left: 2em;">
+      <nz-col nzMd="4" nzSm="24" style="margin-left: 2em;">
         <button nz-button (click)="getData()" [nzType]="'primary'" [nzLoading]="loading">搜索</button>
         <button nz-button type="reset" (click)="onReset()" class="mx-sm">重置</button>
-        <a (click)="expandForm=!expandForm">
-          {{expandForm ? '收起' : '展开'}}
-          <i class="anticon" [class.anticon-down]="!expandForm" [class.anticon-up]="expandForm"></i>
-        </a>
+        <!--<a (click)="expandForm=!expandForm">-->
+          <!--{{expandForm ? '收起' : '展开'}}-->
+          <!--<i class="anticon" [class.anticon-down]="!expandForm" [class.anticon-up]="expandForm"></i>-->
+        <!--</a>-->
       </nz-col>
     </nz-row>
   </form>
-  <button nz-button (click)="add(modalContent)" [nzType]="'primary'">
-    <i class="anticon anticon-plus"></i>
-    <span>新建</span>
-  </button>
   <nz-spin [nzSpinning]="isSpinning" nzTip='Loading...'>
-    <simple-table #st [data]="users" [ps]="q.ps" [extraParams]="params" [bordered]="true" [columns]="columns" (checkboxChange)="UserListComponent.checkboxChange($event)" [total]="total" (sortChange)="UserListComponent.sortChange($event)" pagePlacement="right" [showSizeChanger]="true" toTopInChange showQuickJumper [showTotal]="total" isPageIndexReset [preDataChange]="dataChange" [pageSizeOptions]="pageSizeOptions">  </simple-table>
+    <simple-table #st [data]="users" [ps]="q.ps" [extraParams]="params" [bordered]="true" [columns]="columns" (checkboxChange)="checkboxChange($event)" [total]="total" (sortChange)="sortChange($event)" pagePlacement="right" [showSizeChanger]="true" toTopInChange showQuickJumper [showTotal]="total" isPageIndexReset [preDataChange]="dataChange" [pageSizeOptions]="pageSizeOptions">  </simple-table>
   </nz-spin>
 </nz-card>
