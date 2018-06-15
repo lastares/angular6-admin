@@ -1,21 +1,10 @@
-import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
-import {NzI18nService, NzMessageService, NzModalService} from 'ng-zorro-antd';
-import { tap, map } from 'rxjs/operators';
-import {
-    SimpleTableComponent,
-    SimpleTableColumn,
-    SimpleTableData, SimpleTableFilter, SimpleTableButton,
-} from '@delon/abc';
+import {Component, OnInit} from '@angular/core';
+import {NzMessageService} from 'ng-zorro-antd';
+import {SimpleTableColumn, SimpleTableData,} from '@delon/abc';
 import {Router} from "@angular/router";
 import {_HttpClient} from "@delon/theme";
-import {delay} from "rxjs/internal/operators";
-import {of} from "rxjs/index";
-import {UserCreateComponent} from "../create/create.component";
-import {CreateComponentOptions} from "@angular/core/src/render3/component";
-import {UserEditComponent} from "../edit/edit.component";
-import {SFSchema} from "@delon/form";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {environment} from "@env/environment.prod";
+import {FormBuilder, FormGroup} from "@angular/forms";
+import {ListService} from "./list.service";
 
 @Component({
     selector: 'app-user-list',
@@ -25,7 +14,7 @@ export class UserListComponent implements OnInit {
     public isSpinning = false;
     public total = 0;
     public pageSizeOptions = [3, 5, 10];
-    public searchForm = FormGroup;
+    public searchForm: FormGroup;
     public params = {};
     users: any[] = [];
     q: any = {
@@ -37,14 +26,17 @@ export class UserListComponent implements OnInit {
     };
 
 
-    constructor(private router: Router, private http: _HttpClient, private msg:  NzMessageService, private fb: FormBuilder) {
+    constructor(
+        private router: Router,
+        private http: _HttpClient,
+        private msg:  NzMessageService,
+        private fb: FormBuilder,
+        public index: ListService) {
         this.searchFormInit();
     }
 
     ngOnInit(): void {
         this.getData();
-        // NzI18nService('zh-cn')
-        // location.reload();
     }
 
     searchFormInit() {
@@ -81,7 +73,7 @@ export class UserListComponent implements OnInit {
         { title: '真实姓名', index: 'realname'},
         { title: '手机号', index: 'mobile'},
         { title: '创建时间',  index: 'created_at'},
-        { title: '头像', index: 'avatar', type: 'img'},
+        { title: '头像', index: 'image_path', type: 'img'},
         {
             title: '状态',
             type: 'badge',
@@ -104,9 +96,6 @@ export class UserListComponent implements OnInit {
             ],
         },
     ];
-    edit(id):void {
-        this.router.navigateByUrl('edit/' + id);
-    }
     public static checkboxChange(ret: any) {
         console.log('checkboxChange', ret);
     }
@@ -134,9 +123,8 @@ export class UserListComponent implements OnInit {
             return i;
         });
     }
-    add(): void {
-        this.router.navigateByUrl('user/create');
-    }
+
+
 
     onReset() {
         this.searchFormInit();

@@ -34,8 +34,7 @@ export class UserCreateComponent implements OnInit {
     public avatarUrl: string;
     public imgUrl;
 
-    constructor(private modal: NzModalRef,
-                public msg: NzMessageService,
+    constructor(public msg: NzMessageService,
                 private fb: FormBuilder,
                 public http: _HttpClient,
                 private router: Router) {

@@ -1,72 +1,75 @@
 <page-header>
 
 </page-header>
-<nz-card [nzBordered]="false">
-  <form nz-form [formGroup]="form" (ngSubmit)="submit()">
-    <nz-form-item>
-      <nz-form-label nzXs="24" nzSm="7" nzRequired nzFor="username">用户昵称</nz-form-label>
-      <nz-form-control nzXs="24" nzSm="12" nzMd="10">
-        <input nz-input formControlName="username" id="title" placeholder="用户昵称">
-        <input type="hidden" formControlName="id">
-        <nz-form-explain *ngIf="form.get('username').dirty && form.get('username').errors">请输入用户昵称</nz-form-explain>
-      </nz-form-control>
-    </nz-form-item>
-    <nz-form-item>
-      <nz-form-label nzXs="24" nzSm="7" nzRequired nzFor="realname">真实姓名</nz-form-label>
-      <nz-form-control nzXs="24" nzSm="12" nzMd="10">
-        <input nz-input formControlName="realname" id="realname" placeholder="真实名字">
-        <nz-form-explain *ngIf="form.get('realname').dirty && form.get('realname').errors">请输入真实姓名</nz-form-explain>
-      </nz-form-control>
-    </nz-form-item>
-    <nz-form-item>
-      <nz-form-label nzXs="24" nzSm="7" nzRequired nzFor="mobile">手机号</nz-form-label>
-      <nz-form-control nzXs="24" nzSm="12" nzMd="10">
-        <input nz-input formControlName="mobile" id="mobile" placeholder="手机号">
-        <nz-form-explain *ngIf="form.get('mobile').dirty && form.get('mobile').errors">请输入手机号</nz-form-explain>
-      </nz-form-control>
-    </nz-form-item>
-    <nz-form-item>
-      <nz-form-label nzXs="24" nzSm="7" nzRequired nzFor="avatar">头像</nz-form-label>
-      <nz-form-control nzXs="24" nzSm="12" nzMd="10">
-        <input readonly nz-input [ngModel]="imgUrl" formControlName="avatar" id="avatar" placeholder="头像">
-        <nz-form-explain *ngIf="form.get('avatar').dirty && form.get('avatar').errors">头像</nz-form-explain>
-        <!--<nz-form-control nzXs="24" nzSm="12" nzMd="10">-->
-        <nz-upload class="avatar-uploader"
-                   nzAction="http://www.admin-api.com/upload"
-                   nzName="avatar"
-                   nzListType="picture-card"
-                   [nzShowUploadList]="false"
-                   [nzBeforeUpload]="beforeUpload"
-                   (nzChange)="handleChange($event)">
-          <ng-container *ngIf="!avatarUrl">
-            <i class="anticon anticon-plus"></i>
-            <div class="ant-upload-text">Upload</div>
-          </ng-container>
-          <img *ngIf="avatarUrl" width="130" [src]="avatarUrl" class="avatar">
-        </nz-upload>
-      </nz-form-control>
-    </nz-form-item>
-    <nz-form-item>
-      <nz-form-label nzXs="24" nzSm="7" nzRequired nzFor="profile">个人简介</nz-form-label>
-      <nz-form-control nzXs="24" nzSm="12" nzMd="10">
-        <textarea nz-input formControlName="profile" id="profile" [nzAutosize]="{minRows: 4}" placeholder="请输入你的个人简介"></textarea>
-        <nz-form-explain *ngIf="form.get('profile').dirty && form.get('profile').errors">请输入个人简介</nz-form-explain>
-      </nz-form-control>
-    </nz-form-item>
-    <nz-form-item>
-      <nz-form-label nzXs="24" nzSm="7" nzFor="status">状态</nz-form-label>
-      <nz-form-control nzXs="24" nzSm="12" nzMd="10">
-        <nz-radio-group formControlName="status">
-          <label nz-radio [nzValue]="1">正常</label>
-          <label nz-radio [nzValue]="2">锁定</label>
-        </nz-radio-group>
-      </nz-form-control>
-    </nz-form-item>
-    <nz-form-item>
-      <nz-form-control [nzXs]="{ span: 24, offset: 0 }" [nzSm]="{ span: 10, offset: 7 }">
-        <button nz-button nzType="primary" type="submit" [nzLoading]="submitting">提交</button>
-        <button nz-button class="ml-sm">保存</button>
-      </nz-form-control>
-    </nz-form-item>
-  </form>
-</nz-card>
+<nz-spin [nzSpinning]="isSpinning" [nzSize]="'large'">
+  <nz-card [nzBordered]="false">
+    <form nz-form [formGroup]="form" (ngSubmit)="submit()">
+      <nz-form-item>
+        <nz-form-label nzXs="24" nzSm="7" nzRequired nzFor="username">用户昵称</nz-form-label>
+        <nz-form-control nzXs="24" nzSm="12" nzMd="10">
+          <input nz-input formControlName="username" id="title" placeholder="用户昵称">
+          <input type="hidden" formControlName="id">
+          <nz-form-explain *ngIf="form.get('username').dirty && form.get('username').errors">请输入用户昵称</nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzXs="24" nzSm="7" nzRequired nzFor="realname">真实姓名</nz-form-label>
+        <nz-form-control nzXs="24" nzSm="12" nzMd="10">
+          <input nz-input formControlName="realname" id="realname" placeholder="真实名字">
+          <nz-form-explain *ngIf="form.get('realname').dirty && form.get('realname').errors">请输入真实姓名</nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzXs="24" nzSm="7" nzRequired nzFor="mobile">手机号</nz-form-label>
+        <nz-form-control nzXs="24" nzSm="12" nzMd="10">
+          <input nz-input formControlName="mobile" id="mobile" placeholder="手机号">
+          <nz-form-explain *ngIf="form.get('mobile').dirty && form.get('mobile').errors">请输入手机号</nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzXs="24" nzSm="7" nzRequired nzFor="avatar">头像</nz-form-label>
+        <nz-form-control nzXs="24" nzSm="12" nzMd="10">
+          <input readonly nz-input [ngModel]="imgUrl" formControlName="avatar" id="avatar" placeholder="头像">
+          <nz-form-explain *ngIf="form.get('avatar').dirty && form.get('avatar').errors">头像</nz-form-explain>
+          <!--<nz-form-control nzXs="24" nzSm="12" nzMd="10">-->
+          <nz-upload class="avatar-uploader"
+                     nzAction="http://www.admin-api.com/upload"
+                     nzName="avatar"
+                     nzListType="picture-card"
+                     [nzShowUploadList]="false"
+                     [nzBeforeUpload]="beforeUpload"
+                     (nzChange)="handleChange($event)">
+            <ng-container *ngIf="!avatarUrl">
+              <i class="anticon anticon-plus"></i>
+              <div class="ant-upload-text">Upload</div>
+            </ng-container>
+            <img *ngIf="avatarUrl" width="130" [src]="avatarUrl" class="avatar">
+          </nz-upload>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzXs="24" nzSm="7" nzRequired nzFor="profile">个人简介</nz-form-label>
+        <nz-form-control nzXs="24" nzSm="12" nzMd="10">
+          <textarea nz-input formControlName="profile" id="profile" [nzAutosize]="{minRows: 4}" placeholder="请输入你的个人简介"></textarea>
+          <nz-form-explain *ngIf="form.get('profile').dirty && form.get('profile').errors">请输入个人简介</nz-form-explain>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzXs="24" nzSm="7" nzFor="status">状态</nz-form-label>
+        <nz-form-control nzXs="24" nzSm="12" nzMd="10">
+          <nz-radio-group formControlName="status">
+            <label nz-radio [nzValue]="1">正常</label>
+            <label nz-radio [nzValue]="2">锁定</label>
+          </nz-radio-group>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-control [nzXs]="{ span: 24, offset: 0 }" [nzSm]="{ span: 10, offset: 7 }">
+          <button nz-button nzType="primary" type="submit" [nzLoading]="submitting">提交</button>
+          <button nz-button class="ml-sm">保存</button>
+        </nz-form-control>
+      </nz-form-item>
+    </form>
+  </nz-card>
+</nz-spin>
+

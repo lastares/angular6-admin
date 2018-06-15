@@ -5,11 +5,10 @@ import {UserEditComponent} from "./edit/edit.component";
 import {UserViewComponent} from "./view/view.component";
 import {UserCreateComponent} from "./create/create.component";
 import {NzModalRef} from "ng-zorro-antd";
+import {ListService} from "./list/list.service";
 
 const routes: Routes = [
-    // {path: 'index', component: }
-
-    {path: 'list', component: UserListComponent, cache: false},
+    {path: 'list', component: UserListComponent},
     {path: 'create', component: UserCreateComponent, data: {title: '创建用户'}},
     {path: 'edit/:id', component: UserEditComponent, data: {title: '编辑用户'}},
     {path: 'view/:id', component: UserViewComponent}
@@ -18,7 +17,7 @@ const routes: Routes = [
 @NgModule({
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule],
-    providers: [NzModalRef]
+    providers: [NzModalRef, ListService]
 })
 export class UserRoutingModule {
 }

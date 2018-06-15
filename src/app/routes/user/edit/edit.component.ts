@@ -27,20 +27,21 @@ import {HttpErrorResponse} from "@angular/common/http";
     templateUrl: './edit.component.html',
 })
 export class UserEditComponent implements OnInit {
-
+    public image_path: string = 'http://www.admin-api.com';
     public form: FormGroup;
     public submitting = false;
     public loading = false;
     public avatarUrl: string;
     public imgUrl;
     public user_id;
+    public isSpinning: boolean = false;
     constructor(private modal: NzModalRef,
                 public msg: NzMessageService,
                 public http: _HttpClient,
                 public fb: FormBuilder,
                 public ar: ActivatedRoute,
                 public router: Router) {
-
+        this.isSpinning = true;
         this.formInit();
         const url = 'http://www.admin-api.com/getUser';
         this.user_id = this.ar.snapshot.paramMap.get('id');
@@ -56,7 +57,7 @@ export class UserEditComponent implements OnInit {
                 status: [data.data.status, [Validators.min(1), Validators.max(2)]],
                 id: [this.user_id, Validators.required]
             });
-            this.avatarUrl = data.data.avatar;
+            this.avatarUrl = this.image_path + data.data.avatar;
         }, (error: HttpErrorResponse) => {
             if (error.error instanceof Error) {
                 if (error.error instanceof Error) {
@@ -65,7 +66,8 @@ export class UserEditComponent implements OnInit {
                     console.log(`Backend returned code ${error.status}, body was: ${error.error}`);
                 }
             }
-        });
+        },
+            () => this.isSpinning = false);
     }
 
 
