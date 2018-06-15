@@ -1,0 +1,70 @@
+<page-header>
+  <ng-template #action>
+    <button (click)="add()" nz-button nzType="primary">新建用户</button>
+  </ng-template>
+</page-header>
+<nz-card>
+  <form nz-form [nzLayout]="'inline'" (ngSubmit)="getData()" [formGroup]="searchForm" class="search__form">
+    <nz-row [nzGutter]="{ md: 8, lg: 24, xl: 48 }">
+      <nz-col nzMd="8" nzSm="24" style="margin-right:15px;">
+        <nz-form-item>
+          <nz-form-label nzFor="username">用户昵称</nz-form-label>
+          <nz-form-control>
+            <input nz-input formControlName="username" name="username" placeholder="请输入用户昵称" id="username">
+          </nz-form-control>
+        </nz-form-item>
+      </nz-col>
+      <nz-col nzMd="8" nzSm="24">
+        <nz-form-item>
+          <nz-form-label nzFor="realname">真实姓名</nz-form-label>
+          <nz-form-control>
+            <input nz-input formControlName="realname" name="realname" placeholder="请输入用户昵称" id="realname">
+          </nz-form-control>
+        </nz-form-item>
+      </nz-col>
+      <nz-col nzMd="8" nzSm="24" style="margin-right:15px;">
+        <nz-form-item>
+          <nz-form-label nzFor="mobile">手机号</nz-form-label>
+          <nz-form-control>
+            <input nz-input formControlName="mobile" name="mobile" placeholder="请输入用户昵称" id="mobile">
+          </nz-form-control>
+        </nz-form-item>
+      </nz-col>
+      <!--<nz-col nzMd="8" nzSm="24" style="margin-right:15px;">-->
+        <!--<nz-form-item>-->
+          <!--<nz-form-label nzFor="created_at">创建时间</nz-form-label>-->
+          <!--<nz-form-control>-->
+            <!--<nz-date-picker formControlName="start_time" [nzSize]="size"></nz-date-picker> ~-->
+            <!--<nz-date-picker formControlName="end_time" [nzSize]="size"></nz-date-picker>-->
+          <!--</nz-form-control>-->
+        <!--</nz-form-item>-->
+      <!--</nz-col>-->
+      <nz-col nzMd="8" nzSm="24">
+        <nz-form-item>
+          <nz-form-label nzFor="status">用户状态</nz-form-label>
+          <nz-form-control>
+            <nz-select formControlName="status" id="status" [nzPlaceHolder]="'请选择'" [nzShowSearch]="true">
+              <nz-option [nzLabel]="'正常'" [nzValue]="1"></nz-option>
+              <nz-option [nzLabel]="'锁定'" [nzValue]="2"></nz-option>
+            </nz-select>
+          </nz-form-control>
+        </nz-form-item>
+      </nz-col>
+      <nz-col [nzSpan]="expandForm ? 24 : 8" [class.text-right]="expandForm" style="margin-left: 2em;">
+        <button nz-button (click)="getData()" [nzType]="'primary'" [nzLoading]="loading">搜索</button>
+        <button nz-button type="reset" (click)="onReset()" class="mx-sm">重置</button>
+        <a (click)="expandForm=!expandForm">
+          {{expandForm ? '收起' : '展开'}}
+          <i class="anticon" [class.anticon-down]="!expandForm" [class.anticon-up]="expandForm"></i>
+        </a>
+      </nz-col>
+    </nz-row>
+  </form>
+  <button nz-button (click)="add(modalContent)" [nzType]="'primary'">
+    <i class="anticon anticon-plus"></i>
+    <span>新建</span>
+  </button>
+  <nz-spin [nzSpinning]="isSpinning" nzTip='Loading...'>
+    <simple-table #st [data]="users" [ps]="q.ps" [extraParams]="params" [bordered]="true" [columns]="columns" (checkboxChange)="UserListComponent.checkboxChange($event)" [total]="total" (sortChange)="UserListComponent.sortChange($event)" pagePlacement="right" [showSizeChanger]="true" toTopInChange showQuickJumper [showTotal]="total" isPageIndexReset [preDataChange]="dataChange" [pageSizeOptions]="pageSizeOptions">  </simple-table>
+  </nz-spin>
+</nz-card>

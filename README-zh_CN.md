@@ -1,24 +1,21 @@
 [![Build Status](https://travis-ci.org/cipchk/ng-alain.svg?branch=master)](https://travis-ci.org/cipchk/ng-alain)
 [![Dependency Status](https://david-dm.org/cipchk/ng-alain/status.svg)](https://david-dm.org/cipchk/ng-alain)
 [![NPM version](https://img.shields.io/npm/v/ng-alain.svg)](https://www.npmjs.com/package/ng-alain)
-[![NPM version](https://img.shields.io/npm/v/ng-alain/next.svg)](https://www.npmjs.com/package/ng-alain)
 [![prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://prettier.io/)
-# angular6-admin
-最新版的angular 增删改查，UI为蚂蚁金服ng-alain,ant-zorro 框架
 
 # ng-alain
 
-[Ng-zorro-antd](https://github.com/NG-ZORRO/ng-zorro-antd) admin panel front-end framework.
+一套基于 [Ng-zorro-antd](https://github.com/NG-ZORRO/ng-zorro-antd)【ANT DESIGN】 的企业后台模板。
 
-更多信息见[中文 README](README-zh_CN.md)
+[README in English](README.md)
 
 [DEMO](https://cipchk.github.io/ng-alain/)
 
-## Quick start
+## 快速入门
 
-There are two ways to install:
+有二种方式进行安装：
 
-### Use the Command Line
+### 命令行工具
 
 ```bash
 ng new demo --style less
@@ -27,38 +24,37 @@ ng add ng-alain
 ng serve
 ```
 
-Please refer to [Cli] (http://ng-alain.com/cli) for more details.
+请参考[命令行工具](http://ng-alain.com/cli)了解更多细节。
 
-### Clone the Git Repository
+### 直接 clone git 仓库
 
 ```bash
-# --depth 1 removes all but one .git commit history
 $ git clone --depth=1 https://github.com/cipchk/ng-alain.git my-project
 
-# change directory
 cd my-project
 
-# install npm package
+# 安装依赖包
 npm install
 
-# start the serve
+# 启动
 npm start
 
-# use HMR
+# 使用HMR启动
 npm run serve:hmr
 ```
 
-> [vscode] recommended install [ng-zorro-vscode](https://marketplace.visualstudio.com/items?itemName=cipchk.ng-zorro-vscode) plugins, that includes `nz-alain-*` snippets.
+> [vscode] 建议安装 [ng-zorro-vscode](https://marketplace.visualstudio.com/items?itemName=cipchk.ng-zorro-vscode) 插件，含 `nz-alain-*` 代码片断。
+
 
 ## Links
 
-+ [Document](http://ng-alain.com)
++ [文档](http://ng-alain.com)
 + [@delon](https://github.com/cipchk/delon)
 + [DEMO](https://cipchk.github.io/ng-alain/)
 
 ## Delon
 
-[delong](https://github.com/cipchk/delon) is a production-ready solution for admin business components packages, Built on the design principles developed by Ant Design.
+[delong](https://github.com/cipchk/delon) 是基于 Ant Design 设计理念的企业级中后台前端业务型组件库。
 
 [![Build Status](https://travis-ci.org/cipchk/delon.svg?branch=master)](https://travis-ci.org/cipchk/delon)
 [![Dependency Status](https://david-dm.org/cipchk/delon/status.svg)](https://david-dm.org/cipchk/delon)
@@ -78,22 +74,38 @@ npm run serve:hmr
 | @delon/cache | [![NPM version](https://img.shields.io/npm/v/@delon/cache.svg)](https://www.npmjs.com/package/@delon/cache) | [![NPM version](https://img.shields.io/npm/v/@delon/cache/next.svg)](https://www.npmjs.com/package/@delon/cache) |
 | @delon/util | [![NPM version](https://img.shields.io/npm/v/@delon/util.svg)](https://www.npmjs.com/package/@delon/util) | [![NPM version](https://img.shields.io/npm/v/@delon/util/next.svg)](https://www.npmjs.com/package/@delon/util) |
 
+## Architecture
 
-## Features
+![Architecture](https://github.com/cipchk/delon/blob/master/_screenshot/architecture.png)
 
-+ `ng-zorro-antd` based
-+ Responsive Layout
-+ I18n
-+ [@delon](https://github.com/cipchk/delon)
-+ Lazy load Assets
-+ UI Router States
-+ Customize Theme
-+ Less preprocessor
-+ Well organized & commented code
-+ Simple upgrade
-+ Support Docker deploy
+## 特性
 
++ 基于 `ng-zorro-antd`
++ 响应式
++ 国际化
++ 基建类库 [@delon](https://github.com/cipchk/delon)（包括：业务组件、ACL访问控制、缓存、授权、动态表单等）
++ 延迟加载及良好的启用画面
++ 良好的UI路由设计
++ 定制主题
++ Less预编译
++ 良好的目录组织结构
++ 简单升级
++ 支持Docker部署
 
+## 应用截图
+
+![desktop](https://github.com/cipchk/delon/blob/master/_screenshot/desktop.png)
+![ipad](https://github.com/cipchk/delon/blob/master/_screenshot/ipad.png)
+![iphone](https://github.com/cipchk/delon/blob/master/_screenshot/iphone.png)
+
+## Troubleshooting
+
+Please follow this guidelines when reporting bugs and feature requests:
+
+1. Use [GitHub Issues](https://github.com/cipchk/ng-alain/issues) board to report bugs and feature requests (not our email address)
+2. Please **always** write steps to reproduce the error. That way we can focus on fixing the bug, not scratching our heads trying to reproduce it.
+
+Thanks for understanding!
 
 ### License
 
