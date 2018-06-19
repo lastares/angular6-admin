@@ -10,7 +10,7 @@
         <nz-form-item>
           <nz-form-label nzFor="username">用户昵称</nz-form-label>
           <nz-form-control>
-            <input nz-input formControlName="username" name="username" placeholder="请输入用户昵称" id="username">
+            <input nz-input formControlName="username" name="username" placeholder="用户昵称" id="username">
           </nz-form-control>
         </nz-form-item>
       </nz-col>
@@ -18,7 +18,7 @@
         <nz-form-item>
           <nz-form-label nzFor="realname">真实姓名</nz-form-label>
           <nz-form-control>
-            <input nz-input formControlName="realname" name="realname" placeholder="请输入用户昵称" id="realname">
+            <input nz-input formControlName="realname" name="realname" placeholder="真实姓名" id="realname">
           </nz-form-control>
         </nz-form-item>
       </nz-col>
@@ -26,7 +26,7 @@
         <nz-form-item>
           <nz-form-label nzFor="mobile">手机号</nz-form-label>
           <nz-form-control>
-            <input nz-input formControlName="mobile" name="mobile" placeholder="请输入用户昵称" id="mobile">
+            <input nz-input formControlName="mobile" name="mobile" placeholder="手机号" id="mobile">
           </nz-form-control>
         </nz-form-item>
       </nz-col>
@@ -43,7 +43,7 @@
         <nz-form-item>
           <nz-form-label nzFor="status">用户状态</nz-form-label>
           <nz-form-control>
-            <nz-select formControlName="status" id="status" [nzPlaceHolder]="'请选择'" [nzShowSearch]="true">
+            <nz-select formControlName="status" [ngModel]="selectedValue" id="status" [nzPlaceHolder]="'请选择'" [nzShowSearch]="true">
               <nz-option [nzLabel]="'正常'" [nzValue]="1"></nz-option>
               <nz-option [nzLabel]="'锁定'" [nzValue]="2"></nz-option>
             </nz-select>

@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {NzModalRef, NzMessageService, UploadFile} from 'ng-zorro-antd';
+import {NzMessageService, UploadFile} from 'ng-zorro-antd';
 import {_HttpClient} from '@delon/theme';
 import {SFSchema, SFUISchema} from '@delon/form';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
@@ -35,8 +35,7 @@ export class UserEditComponent implements OnInit {
     public imgUrl;
     public user_id;
     public isSpinning: boolean = false;
-    constructor(private modal: NzModalRef,
-                public msg: NzMessageService,
+    constructor(public msg: NzMessageService,
                 public http: _HttpClient,
                 public fb: FormBuilder,
                 public ar: ActivatedRoute,
@@ -122,12 +121,6 @@ export class UserEditComponent implements OnInit {
         });
     }
 
-    // save(value: any) {
-    //   this.http.post(`/user/${this.record.id}`, value).subscribe(res => {
-    //     this.msgSrv.success('保存成功');
-    //     this.modal.close(true);
-    //   });
-    // }
     beforeUpload = (file: File) => {
         const fileType = ['image/jpeg', 'image/png', 'image/gif'];
         const uploadFileType = file.type;

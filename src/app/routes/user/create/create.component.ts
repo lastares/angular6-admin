@@ -1,10 +1,11 @@
 import {Component, OnInit} from '@angular/core';
-import {NzMessageService, NzModalRef, UploadFile} from 'ng-zorro-antd';
+import {NzMessageService, UploadFile} from 'ng-zorro-antd';
 import {_HttpClient} from '@delon/theme';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from "@angular/router";
 import {HttpErrorResponse} from "@angular/common/http";
 import {UserListComponent} from "../list/list.component";
+import {_Validators} from "@delon/util";
 
 @Component({
     selector: 'app-user-create',
@@ -45,7 +46,7 @@ export class UserCreateComponent implements OnInit {
         this.form = this.fb.group({
             username: [null, [Validators.required]],
             realname: [null, [Validators.required]],
-            mobile: [null, [Validators.required]],
+            mobile: [null, Validators.compose([Validators.required, _Validators.mobile])],
             profile: [null, [Validators.required]],
             avatar: [null, [Validators.required]],
             status: [1, [Validators.min(1), Validators.max(2)]],

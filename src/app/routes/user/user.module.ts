@@ -5,7 +5,6 @@ import {UserListComponent} from './list/list.component';
 import {UserEditComponent} from './edit/edit.component';
 import {UserViewComponent} from './view/view.component';
 import {UserCreateComponent} from "./create/create.component";
-import {NzModalRef} from "ng-zorro-antd";
 import {ListService} from "./list/list.service";
 
 const COMPONENTS = [
@@ -26,7 +25,7 @@ const COMPONENTS_NOROUNT = [
         ...COMPONENTS,
         ...COMPONENTS_NOROUNT
     ],
-    providers: [NzModalRef, ListService],
+    providers: [ListService],
     entryComponents: COMPONENTS_NOROUNT
 })
 export class UserModule {

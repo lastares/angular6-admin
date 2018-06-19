@@ -6,6 +6,7 @@ import {_HttpClient} from "@delon/theme";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {ListService} from "./list.service";
 import {HttpErrorResponse} from "@angular/common/http";
+import { SFSchema } from '@delon/form';
 
 @Component({
     selector: 'app-user-list',
@@ -17,6 +18,8 @@ export class UserListComponent implements OnInit {
     public pageSizeOptions = [3, 5, 10];
     public searchForm: FormGroup;
     public params = {};
+    public selectedValue: '请选择';
+
     users: any[] = [];
     q: any = {
         pi: 1,
@@ -32,8 +35,9 @@ export class UserListComponent implements OnInit {
                 private msg: NzMessageService,
                 private fb: FormBuilder,
                 public index: ListService) {
-        this.searchFormInit();
+
         // this.getData();
+        this.searchFormInit();
     }
 
     ngOnInit(): void {
@@ -52,9 +56,9 @@ export class UserListComponent implements OnInit {
 
     }
 
-    submit(value: any) {
-        console.log(this.searchForm.value);
-    }
+    // submit(value: any) {
+    //     console.log(this.searchForm.value);
+    // }
 
 
     change(value: any) {
@@ -133,7 +137,7 @@ export class UserListComponent implements OnInit {
 
     getData() {
         this.isSpinning = true;
-        console.log(this.searchForm.value);
+        //console.log(this.searchForm.value);
         const url = 'http://www.admin-api.com/adminList';
         this.http.get(url, this.searchForm.value).subscribe((res: any) => {
             //console.log(res);
