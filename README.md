@@ -71,14 +71,12 @@ npm run serve:hmr
 + Simple upgrade
 + Support Docker deploy
 
-
-
-### License
-
-The MIT License (see the [LICENSE](https://github.com/cipchk/ng-alain/blob/master/LICENSE) file for the full text)
-
 ### 用户列表
 ![](./list.png)
 
 ### 用户编辑
 ![](./edit.png)
+
+### License
+
+The MIT License (see the [LICENSE](https://github.com/cipchk/ng-alain/blob/master/LICENSE) file for the full text)
