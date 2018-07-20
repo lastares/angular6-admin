@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  SERVER_URL: `/angular6-admin/dist/angular-admin`,
+  SERVER_URL: `/`,
   production: false,
   useHash: true,
     imageHost: 'http://angular.songyaofeng.com'
