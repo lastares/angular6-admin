@@ -61,7 +61,7 @@ export class UserCreateComponent implements OnInit {
         if (this.form.invalid) return;
         this.submitting = true;
         // console.log(this.form.value);
-        const url = 'http://www.admin-api.com/addUser';
+        const url = 'http://angular.songyaofeng.com/addUser';
         const params = this.form.value;
         this.http.post(url, params).subscribe((data: any) => {
             // console.log(data);

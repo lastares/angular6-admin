@@ -6,7 +6,7 @@ import {Router} from "@angular/router";
 @Injectable()
 export class ListService
 {
-    public image_host: string = 'http://www.admin-api.com';
+    public image_host: string = 'http://angular.songyaofeng.com';
     constructor(private fb: FormBuilder, private router: Router) {
 
     }

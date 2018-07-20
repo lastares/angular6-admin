@@ -27,7 +27,7 @@ import {HttpErrorResponse} from "@angular/common/http";
     templateUrl: './edit.component.html',
 })
 export class UserEditComponent implements OnInit {
-    public image_path: string = 'http://www.admin-api.com';
+    public image_path: string = 'http://angular.songyaofeng.com';
     public form: FormGroup;
     public submitting = false;
     public loading = false;
@@ -42,7 +42,7 @@ export class UserEditComponent implements OnInit {
                 public router: Router) {
         this.isSpinning = true;
         this.formInit();
-        const url = 'http://www.admin-api.com/getUser';
+        const url = 'http://angular.songyaofeng.com/getUser';
         this.user_id = this.ar.snapshot.paramMap.get('id');
 
         this.http.get(url, {user_id: this.user_id}).subscribe((data: any) => {
@@ -82,7 +82,7 @@ export class UserEditComponent implements OnInit {
         if (this.form.invalid) return;
         this.submitting = true;
         // console.log(this.form.value);
-        const url = 'http://www.admin-api.com/editUser';
+        const url = 'http://angular.songyaofeng.com/editUser';
         const params = this.form.value;
         // console.log(params);return;
         this.http.post(url, params).subscribe((data: any) => {

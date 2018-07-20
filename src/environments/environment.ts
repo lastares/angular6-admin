@@ -6,7 +6,7 @@ export const environment = {
   SERVER_URL: `./`,
   production: false,
   useHash: true,
-    imageHost: 'http://www.admin-api.com'
+    imageHost: 'http://angular.songyaofeng.com'
 };
 
 /*

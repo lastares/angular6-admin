@@ -138,7 +138,7 @@ export class UserListComponent implements OnInit {
     getData() {
         this.isSpinning = true;
         //console.log(this.searchForm.value);
-        const url = 'http://www.admin-api.com/adminList';
+        const url = 'http://angular.songyaofeng.com/adminList';
         this.http.get(url, this.searchForm.value).subscribe((res: any) => {
             //console.log(res);
             this.isSpinning = false;
@@ -171,7 +171,7 @@ export class UserListComponent implements OnInit {
 
     deleteUser(id) {
         this.isSpinning = true;
-        const url = 'http://www.admin-api.com/deleteUser';
+        const url = 'http://angular.songyaofeng.com/deleteUser';
         this.http.get(url, {id: id}).subscribe((data: any) => {
                 // console.log(data);
                 this.msg.success(data.msg);
